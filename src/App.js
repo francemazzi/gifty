@@ -1,12 +1,21 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/globals.css';
 import './App.css';
+import Header from './Components/Header';
+import Homepage from './Components/Homepage';
+import NotFound from './Components/NotFound';
 
 const App = () => (
-  <div className="App">
-    <h1>Gifty</h1>
-    <p>Organizza le tue idee regalo.</p>
-  </div>
+  <BrowserRouter>
+    <div className="App">
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
+  </BrowserRouter>
 );
 
 export default App;
