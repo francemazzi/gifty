@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "gifts": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
