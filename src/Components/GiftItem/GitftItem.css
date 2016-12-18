@@ -1,0 +1,38 @@
+.giftCard {
+  padding: 1rem;
+  background-color: #f6f7d7;
+  width: auto;
+  text-align: center;
+  border-radius: 12px;
+  margin: 0.5rem;
+}
+.giftCar__single--text {
+  margin-right: 1rem;
+}
+.buttonIcon {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.modify__input {
+  height: 1.2rem;
+  outline: none;
+  text-align: center;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  margin: 10px;
+  transition: 0.2s all;
+  box-shadow: 0 0 0 0.2rem rgb(216 217 219 / 50%);
+}
