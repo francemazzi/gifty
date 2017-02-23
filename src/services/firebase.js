@@ -2,13 +2,13 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-// TODO: spostare la config in variabili d'ambiente
+// La config arriva dalle variabili d'ambiente REACT_APP_FIREBASE_* (vedi .env.example).
 const config = {
-  apiKey: 'INSERISCI_API_KEY',
-  authDomain: 'gifty-app.firebaseapp.com',
-  databaseURL: 'https://gifty-app.firebaseio.com',
-  storageBucket: 'gifty-app.appspot.com',
-  messagingSenderId: '000000000000'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);

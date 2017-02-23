@@ -2,7 +2,15 @@
   "rules": {
     "gifts": {
       ".read": "auth != null",
-      ".write": "auth != null"
+      ".write": "auth != null",
+      "$giftId": {
+        "gift": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        }
+      }
     }
   }
 }
