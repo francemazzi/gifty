@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Inputfield.css';
 import GiftsList from '../Giftslist';
-import { addGift, loadGifts } from '../../actions/lists';
+import { addGift, loadList } from '../../actions/lists';
 
 class Inputfield extends Component {
   constructor(props) {
@@ -13,7 +13,23 @@ class Inputfield extends Component {
   }
 
   componentDidMount() {
-    this.props.loadGifts();
+    this.loadIfReady();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.match.params.listId !== this.props.match.params.listId ||
+      prevProps.authReady !== this.props.authReady
+    ) {
+      this.loadIfReady();
+    }
+  }
+
+  loadIfReady() {
+    const listId = this.props.match.params.listId;
+    if (listId && this.props.authReady) {
+      this.props.loadList(listId);
+    }
   }
 
   handleChange(e) {
@@ -25,20 +41,26 @@ class Inputfield extends Component {
     if (this.input) this.input.blur();
     const value = this.state.gift.trim();
     if (!value) return;
-    this.props.addGift(value).then(() => {
+    const listId = this.props.match.params.listId;
+    if (!listId) return;
+    this.props.addGift(listId, value).then(() => {
       this.setState({ gift: '' });
     });
   }
 
   render() {
-    const { gifts } = this.props;
+    const { gifts, budget } = this.props;
     const { gift } = this.state;
     return (
       <div className="input__container">
         <span className="budgetArea">
           {gifts.length === 0
-            ? 'Non hai inserito alcun desiderio.'
-            : 'Hai inserito ' + gifts.length + ' desideri.'}
+            ? 'Non hai inserito alcun desiderio. Budget: ' + budget + ' €'
+            : 'Hai inserito ' +
+              gifts.length +
+              ' desideri. Budget: ' +
+              budget +
+              ' €'}
         </span>
         <form className="input" onSubmit={this.handleAdd}>
           <input
@@ -61,6 +83,10 @@ class Inputfield extends Component {
   }
 }
 
-const mapStateToProps = state => ({ gifts: state.lists.gifts });
+const mapStateToProps = state => ({
+  gifts: state.lists.gifts,
+  budget: state.lists.budget,
+  authReady: state.auth.ready
+});
 
-export default connect(mapStateToProps, { addGift, loadGifts })(Inputfield);
+export default connect(mapStateToProps, { addGift, loadList })(Inputfield);

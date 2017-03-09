@@ -1,25 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import './todolist.css';
-import GiftItem from '../GiftItem';
+import './budgetList.css';
+import BudgetItems from '../BudgetItems';
 import { shareList } from '../../services/share';
 
-const GiftsList = ({ gifts, match }) => {
+const BudgetList = ({ gifts, match }) => {
   const listId = match.params.listId;
   return (
     <div className="list__container">
-      <div className="gifts__container">
-        {gifts.map(item => (
-          <GiftItem item={item} key={item.id} />
-        ))}
-      </div>
-      {gifts.length > 0 && listId && (
+      {gifts.length > 0 ? (
+        <div>
+          <span>Le scelte del festeggiato sono: </span>
+          <BudgetItems />
+        </div>
+      ) : (
         <button
           className="inviaProposte__button"
-          onClick={() => shareList(listId)}
+          onClick={() => listId && shareList(listId)}
         >
-          Condividi le proposte 🎁
+          Condividi al festeggiato 🚀
         </button>
       )}
     </div>
@@ -28,4 +28,4 @@ const GiftsList = ({ gifts, match }) => {
 
 const mapStateToProps = state => ({ gifts: state.lists.gifts });
 
-export default withRouter(connect(mapStateToProps)(GiftsList));
+export default withRouter(connect(mapStateToProps)(BudgetList));

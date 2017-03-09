@@ -1,15 +1,28 @@
 {
   "rules": {
-    "gifts": {
-      ".read": "auth != null",
-      ".write": "auth != null",
-      "$giftId": {
-        "gift": {
-          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+    "lists": {
+      "$listId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "budget": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000"
         },
         "createdAt": {
           ".validate": "newData.isNumber()"
-        }
+        },
+        "gifts": {
+          ".indexOn": ["createdAt"],
+          "$giftId": {
+            "gift": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": { ".validate": false }
+          }
+        },
+        "$other": { ".validate": false }
       }
     }
   }
