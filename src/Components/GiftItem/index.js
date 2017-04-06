@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import './GitftItem.css';
 import { editGift, removeGift } from '../../actions/lists';
 
+const MAX_LENGTH = 80;
+
 class GiftItem extends Component {
   constructor(props) {
     super(props);
@@ -62,6 +64,7 @@ class GiftItem extends Component {
                 }}
                 className="modify__input"
                 value={value}
+                maxLength={MAX_LENGTH}
                 onChange={this.handleChange}
               />
               <button className="buttonIcon" type="submit">
