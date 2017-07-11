@@ -1,0 +1,44 @@
+.home__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 2rem;
+  background-image: url("./giftPresent2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.home__container > h1 {
+  text-align: center;
+  background-color: #e2e6ea72;
+  border-radius: 12px;
+  padding: 0.6rem;
+  color: rgb(229, 69, 69);
+  text-shadow: 5px 5px 15px 5px #000000;
+}
+.navigate > button {
+  height: 2.6rem;
+  outline: none;
+  text-align: center;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background-color: #e2e6ea;
+  padding: 5px 10px;
+  margin: 10px;
+  transition: 0.2s all;
+  box-shadow: 0 0 0 0.2rem rgb(216 217 219 / 50%);
+}
+@media only screen and (max-width: 600px) {
+  html {
+    height: -webkit-fill-available;
+  }
+  .home__container {
+    height: 80vh;
+  }
+}

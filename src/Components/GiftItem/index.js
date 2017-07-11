@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './GitftItem.css';
 import { editGift, removeGift } from '../../actions/lists';
+
+const MAX_LENGTH = 80;
 
 class GiftItem extends Component {
   constructor(props) {
@@ -19,8 +23,13 @@ class GiftItem extends Component {
     }
   }
 
+  getListId() {
+    return this.props.match.params.listId;
+  }
+
   handleDelete() {
-    this.props.removeGift(this.props.item.id);
+    const listId = this.getListId();
+    if (listId) this.props.removeGift(listId, this.props.item.id);
   }
 
   handleChange(e) {
@@ -33,9 +42,10 @@ class GiftItem extends Component {
 
   handleSave(e) {
     e.preventDefault();
+    const listId = this.getListId();
     const next = this.state.value.trim();
-    if (next && next !== this.props.item.gift) {
-      this.props.editGift(this.props.item.id, next);
+    if (listId && next && next !== this.props.item.gift) {
+      this.props.editGift(listId, this.props.item.id, next);
     }
     this.setState({ edit: false });
   }
@@ -54,6 +64,7 @@ class GiftItem extends Component {
                 }}
                 className="modify__input"
                 value={value}
+                maxLength={MAX_LENGTH}
                 onChange={this.handleChange}
               />
               <button className="buttonIcon" type="submit">
@@ -84,4 +95,11 @@ class GiftItem extends Component {
   }
 }
 
-export default connect(null, { editGift, removeGift })(GiftItem);
+GiftItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    gift: PropTypes.string.isRequired
+  }).isRequired
+};
+
+export default withRouter(connect(null, { editGift, removeGift })(GiftItem));

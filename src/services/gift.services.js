@@ -1,10 +1,39 @@
 import { database } from './firebase';
 
-// Tutti i regali stanno sotto un unico nodo `gifts` del Realtime Database.
-const giftsRef = database.ref('gifts');
+// Modello dati su Realtime Database:
+//   lists/{listId}/budget
+//   lists/{listId}/createdAt
+//   lists/{listId}/gifts/{giftId}/{ gift, createdAt }
 
-export const getGifts = () =>
-  giftsRef
+const listRef = listId => database.ref('lists/' + listId);
+const giftsRef = listId => database.ref('lists/' + listId + '/gifts');
+
+// Crea una nuova lista e restituisce il suo id (da mettere nell'URL condivisibile).
+export const createList = () => {
+  const ref = database.ref('lists').push();
+  return ref.set({ budget: 0, createdAt: Date.now() }).then(() => ref.key);
+};
+
+export const getList = listId =>
+  listRef(listId)
+    .once('value')
+    .then(snapshot => {
+      const data = snapshot.val();
+      if (!data) return null;
+      return {
+        id: listId,
+        budget: typeof data.budget === 'number' ? data.budget : 0,
+        createdAt: typeof data.createdAt === 'number' ? data.createdAt : 0
+      };
+    });
+
+export const setBudget = (listId, budget) =>
+  listRef(listId)
+    .child('budget')
+    .set(budget);
+
+export const getGifts = listId =>
+  giftsRef(listId)
     .orderByChild('createdAt')
     .once('value')
     .then(snapshot => {
@@ -14,15 +43,15 @@ export const getGifts = () =>
         gifts.push({
           id: child.key,
           gift: String(data.gift || ''),
-          createdAt: data.createdAt || 0
+          createdAt: typeof data.createdAt === 'number' ? data.createdAt : 0
         });
       });
       return gifts;
     });
 
-export const addGift = gift => {
+export const addGift = (listId, gift) => {
   const createdAt = Date.now();
-  const ref = giftsRef.push();
+  const ref = giftsRef(listId).push();
   return ref.set({ gift, createdAt }).then(() => ({
     id: ref.key,
     gift,
@@ -30,6 +59,12 @@ export const addGift = gift => {
   }));
 };
 
-export const updateGift = (id, gift) => giftsRef.child(id).update({ gift });
+export const updateGift = (listId, giftId, gift) =>
+  giftsRef(listId)
+    .child(giftId)
+    .update({ gift });
 
-export const deleteGift = id => giftsRef.child(id).remove();
+export const deleteGift = (listId, giftId) =>
+  giftsRef(listId)
+    .child(giftId)
+    .remove();
