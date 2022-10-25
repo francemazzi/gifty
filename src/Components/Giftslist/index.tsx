@@ -6,10 +6,12 @@ interface Props {
   setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
 }
 
-const GiftsList: React.FC = ({ gifts, setGifts }: Props) => {
+const GiftsList: React.FC<Props> = ({ gifts, setGifts }: Props) => {
   return (
     <div className="gifts">
-      <div></div>
+      {gifts.map((item) => (
+        <li>{item.gift}</li>
+      ))}
     </div>
   );
 };
