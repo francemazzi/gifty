@@ -1,3 +1,9 @@
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .input__box {
   padding: 6px;
   margin-top: 8px;

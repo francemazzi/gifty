@@ -56,7 +56,6 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
               onChange={(e) => setEditgift(e.target.value)}
               className="modify__input"
             />
-
             <button
               value={editGift}
               className="buttonIcon"

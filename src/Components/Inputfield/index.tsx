@@ -29,7 +29,7 @@ const Inputfield: React.FC<Props> = ({ gift, setGift, handleAdd }: Props) => {
         placeholder="Inserisci un tuo desiderio..."
       />
       <button className="input__submit" type="submit">
-        Proponi
+        Inserisci
       </button>
     </form>
   );
