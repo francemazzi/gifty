@@ -22,6 +22,7 @@ const GiftsList: React.FC<Props> = ({ gifts, setGifts }: Props) => {
           />
         ))}
       </div>
+      {/* Invio proposte  */}
       {gifts.length > 0 ? (
         <button className="inviaProposte__button">Invia le proposte 🎁</button>
       ) : (
