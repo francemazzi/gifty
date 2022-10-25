@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import Inputfield from "./Components/Inputfield";
 import HeaderUno from "./Components/Header";
-// import GiftsList from "./Components/Giftslist";
+import GiftsList from "./Components/Giftslist";
 //import model
 import { Gift } from "./model";
 
@@ -25,10 +25,7 @@ const App: React.FC = () => {
         setGift={setGift}
         handleAdd={handleAdd}
       ></Inputfield>
-      {/* <GiftsList /> */}
-      {gifts.map((e) => (
-        <li>{e.gift}</li>
-      ))}
+      <GiftsList gifts={gifts} setGifts={setGifts} />
     </div>
   );
 };
