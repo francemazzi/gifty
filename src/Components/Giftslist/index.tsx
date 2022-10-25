@@ -1,6 +1,8 @@
 import React from "react";
 import "./todolist.css";
 import { Gift } from "../../model";
+import GiftItem from "../GiftItem";
+
 interface Props {
   gifts: Gift[];
   setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
@@ -8,9 +10,9 @@ interface Props {
 
 const GiftsList: React.FC<Props> = ({ gifts, setGifts }: Props) => {
   return (
-    <div className="gifts">
+    <div className="gifts__container">
       {gifts.map((item) => (
-        <li>{item.gift}</li>
+        <GiftItem item={item} key={item.id} gifts={gifts} setGifts={setGifts} />
       ))}
     </div>
   );
