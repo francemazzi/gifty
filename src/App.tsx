@@ -1,12 +1,15 @@
 import React from "react";
 import "./App.css";
+import Inputfield from "./Components/Inputfield";
+import HeaderUno from "./Components/Header";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Hello ts</h1>
+      <HeaderUno></HeaderUno>
+      <Inputfield></Inputfield>
     </div>
   );
-}
+};
 
 export default App;

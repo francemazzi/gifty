@@ -2,6 +2,19 @@
 
 ![GIFTY](./img/funzioni.png)
 
+##To do list 📝
+
+- Creazione area festeggiato
+  - input -> string con massimo 8 proposte
+  - Save input -> proposta di regalo
+  - Modify -> modifica proposta di regalo
+  - Area di visione del budget sopra input (range che non può oltrepassare con proposte)
+  - Invia proposte
+- Creazione area organizzatori del regalo per festeggiato
+  - input -> number che esprime il budget del regalo
+  - Link di convisione per inviare l'app al festeggiato
+- Future -> creare la funzione per gruppi per dividere soldi e raccoglierli
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
