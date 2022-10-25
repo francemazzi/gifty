@@ -1,7 +1,7 @@
 import "./GitftItem.css";
 import { Gift } from "../../model";
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface Props {
   item: Gift;
@@ -34,6 +34,14 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
     setEdit(false);
   };
 
+  //focus modify input (su inputbox)
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
+
   return (
     <div className="giftCard">
       <form
@@ -43,9 +51,10 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
         {edit ? (
           <div>
             <input
+              ref={inputRef}
               value={editGift}
               onChange={(e) => setEditgift(e.target.value)}
-              className="editCard"
+              className="modify__input"
             />
 
             <button
