@@ -1,0 +1,27 @@
+.home__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 60vh;
+  padding: 2rem;
+}
+.home__container > h1 {
+  text-align: center;
+}
+.navigate > button {
+  height: 2.6rem;
+  outline: none;
+  text-align: center;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background-color: #e2e6ea;
+  padding: 5px 10px;
+  margin: 10px;
+  transition: 0.2s all;
+  box-shadow: 0 0 0 0.2rem rgb(216 217 219 / 50%);
+}

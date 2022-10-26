@@ -1,3 +1,7 @@
+.link {
+  text-decoration: none;
+  color: #fd9c63;
+}
 .header__container > h1 {
   color: #fd9c63;
   text-align: center;

@@ -4,12 +4,14 @@
 
 ##To do list 📝
 
-- Creazione area festeggiato
-  - input -> string con massimo 8 proposte
-  - Save input -> proposta di regalo
-  - Modify -> modifica proposta di regalo
-  - Area di visione del budget sopra input (range che non può oltrepassare con proposte)
-  - Invia proposte
+✅ Creazione area festeggiato
+✅ input -> string con massimo 8 proposte
+✅ Save input -> proposta di regalo
+✅ Modify -> modifica proposta di regalo
+
+- Redux per valori -> area festeggiato
+- Area di visione del budget sopra input (range che non può oltrepassare con proposte)
+- Invia proposte
 - Creazione area organizzatori del regalo per festeggiato
   - input -> number che esprime il budget del regalo
   - Link di convisione per inviare l'app al festeggiato

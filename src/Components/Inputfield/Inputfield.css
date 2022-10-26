@@ -44,3 +44,8 @@
   transition: 0.2s all;
   box-shadow: 0 0 0 0.2rem rgb(216 217 219 / 50%);
 }
+@media only screen and (max-width: 600px) {
+  .input__box {
+    width: 5rem;
+  }
+}

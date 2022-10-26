@@ -1,13 +1,23 @@
 import React, { useRef } from "react";
 import "./Inputfield.css";
+import GiftsList from "../Giftslist";
+import { Gift } from "../../model";
 
 interface Props {
   gift: string;
   setGift: React.Dispatch<React.SetStateAction<string>>;
   handleAdd: (e: React.FormEvent) => void;
+  gifts: Gift[];
+  setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
 }
 
-const Inputfield: React.FC<Props> = ({ gift, setGift, handleAdd }: Props) => {
+const Inputfield: React.FC<Props> = ({
+  gift,
+  setGift,
+  handleAdd,
+  gifts,
+  setGifts,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -28,12 +38,13 @@ const Inputfield: React.FC<Props> = ({ gift, setGift, handleAdd }: Props) => {
             setGift(e.target.value);
           }}
           className="input__box"
-          placeholder="Inserisci un tuo desiderio..."
+          placeholder="Cosa desideri? ..."
         />
         <button className="input__submit" type="submit">
           Inserisci
         </button>
       </form>
+      <GiftsList gifts={gifts} setGifts={setGifts} />
     </div>
   );
 };

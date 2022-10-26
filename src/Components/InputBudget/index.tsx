@@ -4,7 +4,7 @@ import React from "react";
 const InputBudget = () => {
   return (
     <form>
-      <input className="input__box" placeholder="Inserisci il budget..." />
+      <input className="input__box" placeholder="Il budget è..." />
       <button className="input__submit" type="submit">
         Inserisci
       </button>
