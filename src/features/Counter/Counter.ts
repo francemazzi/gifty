@@ -16,7 +16,11 @@ const counterSlice = createSlice({
     increment(state) {
       state.value++;
     },
+    decremet(state) {
+      state.value--;
+    },
+    //inserire input string gift
   },
 });
-export const { increment } = counterSlice.actions;
+export const { increment, decremet } = counterSlice.actions;
 export default counterSlice.reducer;

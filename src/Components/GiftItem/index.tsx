@@ -3,6 +3,11 @@ import { Gift } from "../../model";
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 
+//Redux
+import { useAppSelector, UseAppDispatch } from "../../features/hooks";
+import { decremet } from "../../features/Counter/Counter";
+import { useSelector } from "react-redux";
+
 interface Props {
   item: Gift;
   gifts: Gift[];
@@ -10,9 +15,14 @@ interface Props {
 }
 
 const GiftItem = ({ item, gifts, setGifts }: Props) => {
+  //redux -> counter poi input
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = UseAppDispatch();
+
   //delete function
   const handleDelete = (id: number) => {
     setGifts(gifts.filter((item) => item.id !== id));
+    dispatch(decremet());
   };
 
   //edit area

@@ -3,9 +3,15 @@ import "./Inputfield.css";
 import GiftsList from "../Giftslist";
 import { Gift } from "../../model";
 
+//Redux
+import { useAppSelector, UseAppDispatch } from "../../features/hooks";
+import { increment } from "../../features/Counter/Counter";
+import { useSelector } from "react-redux";
+
 interface Props {
   gift: string;
   setGift: React.Dispatch<React.SetStateAction<string>>;
+
   handleAdd: (e: React.FormEvent) => void;
   gifts: Gift[];
   setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
@@ -20,9 +26,18 @@ const Inputfield: React.FC<Props> = ({
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  //redux -> counter poi input
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = UseAppDispatch();
+  const handleClick = () => {
+    dispatch(increment());
+  };
+
   return (
     <div className="input__container">
-      <span className="budgetArea">Il tuo Budget è: 150€</span>
+      <span className="budgetArea">
+        Hai inserito {count} desideri. Il tuo Budget è: 150€
+      </span>
       <form
         className="input"
         onSubmit={(e) => {
@@ -40,7 +55,7 @@ const Inputfield: React.FC<Props> = ({
           className="input__box"
           placeholder="Cosa desideri? ..."
         />
-        <button className="input__submit" type="submit">
+        <button className="input__submit" type="submit" onClick={handleClick}>
           Inserisci
         </button>
       </form>
