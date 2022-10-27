@@ -1,29 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Inputfield.css";
 import GiftsList from "../Giftslist";
-import { Gift } from "../../model";
 
 //Redux
 import { useAppSelector, UseAppDispatch } from "../../features/hooks";
-import { increment } from "../../features/Counter/Counter";
-import { useSelector } from "react-redux";
+import { giftAdded, increment } from "../../features/Counter/Counter";
 
-interface Props {
-  gift: string;
-  setGift: React.Dispatch<React.SetStateAction<string>>;
-
-  handleAdd: (e: React.FormEvent) => void;
-  gifts: Gift[];
-  setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
-}
-
-const Inputfield: React.FC<Props> = ({
-  gift,
-  setGift,
-  handleAdd,
-  gifts,
-  setGifts,
-}: Props) => {
+const Inputfield: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   //redux -> counter poi input
@@ -31,6 +14,15 @@ const Inputfield: React.FC<Props> = ({
   const dispatch = UseAppDispatch();
   const handleClick = () => {
     dispatch(increment());
+  };
+
+  //gift setup
+  const [gift, setGift] = useState<string>("");
+  //cambiare gift con giftText
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(giftAdded(gift));
+    setGift("");
   };
 
   return (
@@ -59,7 +51,7 @@ const Inputfield: React.FC<Props> = ({
           Inserisci
         </button>
       </form>
-      <GiftsList gifts={gifts} setGifts={setGifts} />
+      <GiftsList />
     </div>
   );
 };

@@ -5,23 +5,20 @@ import { useState, useRef, useEffect } from "react";
 
 //Redux
 import { useAppSelector, UseAppDispatch } from "../../features/hooks";
-import { decremet } from "../../features/Counter/Counter";
+import {
+  decremet,
+  removeGift,
+  modifyGift,
+} from "../../features/Counter/Counter";
 import { useSelector } from "react-redux";
 
-interface Props {
-  item: Gift;
-  gifts: Gift[];
-  setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
-}
-
-const GiftItem = ({ item, gifts, setGifts }: Props) => {
+const GiftItem = ({ item }: any) => {
   //redux -> counter poi input
-  const count = useAppSelector((state) => state.counter.value);
   const dispatch = UseAppDispatch();
-
+  const gifts = useAppSelector((state) => state.counter.giftList);
   //delete function
-  const handleDelete = (id: number) => {
-    setGifts(gifts.filter((item) => item.id !== id));
+  const handleDelete = () => {
+    dispatch(removeGift(item.id));
     dispatch(decremet());
   };
 
@@ -34,9 +31,12 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
   //edit function
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
-    setGifts(
-      gifts.map((item) => (item.id === id ? { ...item, gift: editGift } : item))
-    );
+
+    // dispatch(modifyGift(editGift));
+    // console.log(gifts);
+    // console.log(item);
+    //dopo domanda ? ->
+    gifts.map((i) => (i.id === id ? { ...item, gift: editGift } : i));
 
     // setEdit(false);
   };
@@ -62,13 +62,13 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
           <div>
             <input
               ref={inputRef}
+              className="modify__input"
               value={editGift}
               onChange={(e) => setEditgift(e.target.value)}
-              className="modify__input"
             />
             <button
-              value={editGift}
               className="buttonIcon"
+              value={editGift}
               onClick={() => handleOk()}
             >
               ✅
@@ -88,7 +88,7 @@ const GiftItem = ({ item, gifts, setGifts }: Props) => {
         >
           📝
         </button>
-        <button className="buttonIcon" onClick={() => handleDelete(item.id)}>
+        <button className="buttonIcon" onClick={handleDelete}>
           ❌
         </button>
       </form>

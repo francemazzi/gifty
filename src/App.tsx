@@ -11,15 +11,6 @@ import Homepage from "./Components/Homepage";
 import { Gift } from "./model";
 
 const App: React.FC = () => {
-  const [gift, setGift] = useState<string>("");
-  const [gifts, setGifts] = useState<Gift[]>([]);
-
-  const handleAdd = (e: React.FormEvent) => {
-    e.preventDefault();
-    setGifts([...gifts, { id: Date.now(), gift: gift, delete: false }]);
-    setGift("");
-  };
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -29,18 +20,7 @@ const App: React.FC = () => {
           <Route path="/organizzaregalo" element={<Budgetplan />} />
           <Route path="/" element={<Homepage />} />
           {/* Area festeggiato */}
-          <Route
-            path="/festeggiato"
-            element={
-              <Inputfield
-                gift={gift}
-                setGift={setGift}
-                gifts={gifts}
-                setGifts={setGifts}
-                handleAdd={handleAdd}
-              />
-            }
-          />
+          <Route path="/festeggiato" element={<Inputfield />} />
         </Routes>
       </div>
     </BrowserRouter>

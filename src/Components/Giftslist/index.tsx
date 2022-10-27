@@ -3,23 +3,16 @@ import "./todolist.css";
 import { Gift } from "../../model";
 import GiftItem from "../GiftItem";
 
-interface Props {
-  gifts: Gift[];
-  setGifts: React.Dispatch<React.SetStateAction<Gift[]>>;
-}
+//Redux
+import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 
-const GiftsList: React.FC<Props> = ({ gifts, setGifts }: Props) => {
-  console.log(gifts);
+const GiftsList: React.FC = () => {
+  const gifts = useAppSelector((state) => state.counter.giftList);
   return (
     <div className="list__container">
       <div className="gifts__container">
         {gifts.map((item) => (
-          <GiftItem
-            item={item}
-            key={item.id}
-            gifts={gifts}
-            setGifts={setGifts}
-          />
+          <GiftItem item={item} key={item.id} />
         ))}
       </div>
       {/* Invio proposte  */}

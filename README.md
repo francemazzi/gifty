@@ -17,6 +17,11 @@
   - Link di convisione per inviare l'app al festeggiato
 - Future -> creare la funzione per gruppi per dividere soldi e raccoglierli
 
+##Dubbi
+
+- Come configurare redux correttamente?
+- Come configurare le varie interface?
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
