@@ -5,9 +5,17 @@
   justify-content: space-around;
   height: 60vh;
   padding: 2rem;
+  background-image: url("../../../img/giftPresent2.jpg");
+  background-position: center;
+  background-size: cover;
 }
 .home__container > h1 {
   text-align: center;
+  background-color: #e2e6ea22;
+  border-radius: 12px;
+  padding: 0.6rem;
+  /* color: white; */
+  text-shadow: 0 0 0 0.8rem rgb(216 217 219);
 }
 .navigate > button {
   height: 2.6rem;
