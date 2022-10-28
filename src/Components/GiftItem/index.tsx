@@ -8,6 +8,7 @@ import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import {
   decremet,
   removeGift,
+  giftAdded,
   modifyGift,
 } from "../../features/Counter/Counter";
 import { useSelector } from "react-redux";
@@ -32,11 +33,10 @@ const GiftItem = ({ item }: any) => {
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
 
-    // dispatch(modifyGift(editGift));
-    // console.log(gifts);
-    // console.log(item);
-    //dopo domanda ? ->
-    gifts.map((i) => (i.id === id ? { ...item, gift: editGift } : i));
+    //console.log(gifts);
+    //gifts.map((item) => (item.id === id ? { ...item, gift: editGift } : item))
+    gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(editGift)) : i));
+    gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(item.id)) : i));
 
     // setEdit(false);
   };

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import GiftsList from "../../Components/Giftslist";
 import { Gift } from "../../model";
 interface CounterState {
   value: number;
@@ -18,7 +19,7 @@ const counterSlice = createSlice({
       state.value++;
     },
     decremet(state) {
-      state.value--;
+      state.value > 0 ? state.value-- : (state.value = 0);
     },
     giftAdded: (state, action: PayloadAction<string>) => {
       state.giftList = [
@@ -33,11 +34,21 @@ const counterSlice = createSlice({
     removeGift: (state, action: PayloadAction<number>) => {
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
     },
-    modifyGift: (state, action: PayloadAction<Gift>) => {
-      //sbagliata
-      // state.giftList = state.giftList.map(({gift}) =>  {...gift, gift: action.payload});
-      //riferimento
-      // gifts.map((item) => (item.id === id ? { ...item, gift: editGift } : item))
+    modifyGift: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        giftList: state.giftList.map((gift, i) =>
+          i === 0 ? { ...gift, gift: action.payload } : gift
+        ),
+      };
+
+      // state.giftList = [
+      //   ...state.giftList,
+      //   { gift: state.giftList.map((gift, i) => console.log(i)) },
+      // ];
+      //   gifts.map((i) =>
+      //   i.id === id ? { ...item, gift: dispatch(giftAdded(editGift)) } : i
+      // );
     },
   },
 });
