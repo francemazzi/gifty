@@ -35,20 +35,9 @@ const counterSlice = createSlice({
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
     },
     modifyGift: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        giftList: state.giftList.map((gift, i) =>
-          i === 0 ? { ...gift, gift: action.payload } : gift
-        ),
-      };
-
-      // state.giftList = [
-      //   ...state.giftList,
-      //   { gift: state.giftList.map((gift, i) => console.log(i)) },
-      // ];
-      //   gifts.map((i) =>
-      //   i.id === id ? { ...item, gift: dispatch(giftAdded(editGift)) } : i
-      // );
+      state.giftList = state.giftList.map((i) =>
+        i.id === 1 ? { ...i, gift: action.payload } : i
+      );
     },
   },
 });

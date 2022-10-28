@@ -35,8 +35,8 @@ const GiftItem = ({ item }: any) => {
 
     //console.log(gifts);
     //gifts.map((item) => (item.id === id ? { ...item, gift: editGift } : item))
-    gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(editGift)) : i));
-    gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(item.id)) : i));
+    // gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(editGift)) : i));
+    dispatch(modifyGift(editGift));
 
     // setEdit(false);
   };
