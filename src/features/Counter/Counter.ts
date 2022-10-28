@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { idText } from "typescript";
 import GiftsList from "../../Components/Giftslist";
 import { Gift } from "../../model";
 interface CounterState {
@@ -35,9 +36,11 @@ const counterSlice = createSlice({
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
     },
     modifyGift: (state, action: PayloadAction<string>) => {
+      console.log(action.payload);
+
       //trovare id automatico..al momento cambia solo il primo valore
       state.giftList = state.giftList.map((i) =>
-        i.id === 0 ? { ...i, gift: action.payload } : i
+        i.id === +action.payload ? { ...i, gift: action.payload } : i
       );
     },
   },

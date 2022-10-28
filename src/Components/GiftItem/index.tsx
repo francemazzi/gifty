@@ -32,13 +32,9 @@ const GiftItem = ({ item }: any) => {
   //edit function
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
-
-    //console.log(gifts);
-    //gifts.map((item) => (item.id === id ? { ...item, gift: editGift } : item))
-    // gifts.map((i) => (i.id === item.id ? dispatch(modifyGift(editGift)) : i));
-    dispatch(modifyGift(editGift));
-
-    // setEdit(false);
+    //editGift
+    // dispatch(modifyGift({ payload: { id: item.id, gift: editGift } }));
+    dispatch(modifyGift(item));
   };
   const handleOk = () => {
     setEdit(false);
