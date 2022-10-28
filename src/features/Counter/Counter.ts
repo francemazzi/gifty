@@ -36,8 +36,9 @@ const counterSlice = createSlice({
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
     },
     modifyGift: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
-
+      const item = action.payload;
+      console.log(item);
+      //ERRORE !!!! è oggetto ma non lo apre...
       //trovare id automatico..al momento cambia solo il primo valore
       state.giftList = state.giftList.map((i) =>
         i.id === +action.payload ? { ...i, gift: action.payload } : i
