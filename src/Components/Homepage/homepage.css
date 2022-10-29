@@ -11,11 +11,11 @@
 }
 .home__container > h1 {
   text-align: center;
-  background-color: #e2e6ea22;
+  background-color: #e2e6ea72;
   border-radius: 12px;
   padding: 0.6rem;
-  /* color: white; */
-  text-shadow: 0 0 0 0.8rem rgb(216 217 219);
+  color: rgb(229, 69, 69);
+  text-shadow: 5px 5px 15px 5px #000000;
 }
 .navigate > button {
   height: 2.6rem;

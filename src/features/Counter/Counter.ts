@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { idText } from "typescript";
 import GiftsList from "../../Components/Giftslist";
 import { Gift } from "../../model";
+
 interface CounterState {
   value: number;
   giftList: Gift[];

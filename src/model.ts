@@ -4,3 +4,10 @@ export interface Gift {
   gift: string;
   delete: boolean;
 }
+
+export interface Login {
+  id: number;
+  username: string;
+  mail: string;
+  password: string;
+}
