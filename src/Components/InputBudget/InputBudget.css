@@ -1,3 +1,8 @@
+.budget__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .input__box {
   padding: 6px;
   margin-top: 8px;
@@ -11,7 +16,7 @@
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
 .input__submit {
-  height: 2.6rem;
+  height: 1.5rem;
   outline: none;
   text-align: center;
   appearance: none;

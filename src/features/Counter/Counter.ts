@@ -5,11 +5,13 @@ import { Gift } from "../../model";
 interface CounterState {
   value: number;
   giftList: Gift[];
+  budget: number;
 }
 
 const initialState: CounterState = {
   value: 0,
   giftList: [],
+  budget: 0,
 };
 
 const counterSlice = createSlice({
@@ -44,9 +46,19 @@ const counterSlice = createSlice({
         i.id === +action.payload ? { ...i, gift: action.payload } : i
       );
     },
+    budgetAdd: (state, action: PayloadAction<number>) => {
+      state.budget = action.payload;
+      console.log(state.budget);
+    },
   },
 });
 
-export const { increment, decremet, giftAdded, removeGift, modifyGift } =
-  counterSlice.actions;
+export const {
+  increment,
+  decremet,
+  giftAdded,
+  removeGift,
+  modifyGift,
+  budgetAdd,
+} = counterSlice.actions;
 export default counterSlice.reducer;

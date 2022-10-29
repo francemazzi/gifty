@@ -11,6 +11,7 @@ const Inputfield: React.FC = () => {
 
   //redux -> counter poi input
   const count = useAppSelector((state) => state.counter.value);
+  const budgetPresent = useAppSelector((state) => state.counter.budget);
   const dispatch = UseAppDispatch();
   const handleClick = () => {
     dispatch(increment());
@@ -18,7 +19,7 @@ const Inputfield: React.FC = () => {
 
   //gift setup
   const [gift, setGift] = useState<string>("");
-  //cambiare gift con giftText
+
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(giftAdded(gift));
@@ -28,7 +29,7 @@ const Inputfield: React.FC = () => {
   return (
     <div className="input__container">
       <span className="budgetArea">
-        Hai inserito {count} desideri. Il tuo Budget è: 150€
+        Hai inserito {count} desideri. Il tuo Budget è: {budgetPresent} €
       </span>
       <form
         className="input"
