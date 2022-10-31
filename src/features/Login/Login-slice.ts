@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Login } from "../../model";
+import { LoginModel } from "../../model";
 
-interface LogNow {
-  loginList: Login[];
+interface InitLog {
+  loginList: LoginModel[];
   registrato: boolean;
 }
 
-const initialState: LogNow = {
+const initialState: InitLog = {
   loginList: [],
   registrato: false,
 };
@@ -15,19 +15,20 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    loginAdded: (state, action: PayloadAction<string>) => {
+    // add data to loginlist of users
+    login: (state, action: PayloadAction<LoginModel>) => {
       state.loginList = [
         ...state.loginList,
         {
           id: state.loginList.length,
-          username: action.payload,
-          mail: action.payload,
-          password: action.payload,
+          username: action.payload.username,
+          mail: action.payload.mail,
+          password: action.payload.password,
         },
       ];
     },
   },
 });
 
-export const { loginAdded } = loginSlice.actions;
+export const { login } = loginSlice.actions;
 export default loginSlice.reducer;

@@ -5,7 +5,7 @@ export interface Gift {
   delete: boolean;
 }
 
-export interface Login {
+export interface LoginModel {
   id: number;
   username: string;
   mail: string;

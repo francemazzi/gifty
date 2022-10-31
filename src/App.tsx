@@ -7,7 +7,7 @@ import HeaderUno from "./Components/Header";
 import GiftsList from "./Components/Giftslist";
 import Budgetplan from "./Components/Budgetplan";
 import Homepage from "./Components/Homepage";
-import Login from "./Components/Login";
+import LoginInput from "./Components/Login";
 
 //import model
 import { Gift } from "./model";
@@ -24,7 +24,7 @@ const App: React.FC = () => {
           {/* Area festeggiato */}
           <Route path="/festeggiato" element={<Inputfield />} />
           {/* Area login */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginInput />} />
         </Routes>
       </div>
     </BrowserRouter>
