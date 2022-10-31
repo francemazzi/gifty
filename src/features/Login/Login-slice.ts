@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { access, stat } from "fs";
 import { LoginModel } from "../../model";
 
 interface InitLog {
@@ -27,8 +28,17 @@ const loginSlice = createSlice({
         },
       ];
     },
+    registrato: (state, action: PayloadAction<boolean>) => {},
+    checkLogin: (state, action: PayloadAction<LoginModel>) => {
+      state.loginList.map((user) =>
+        user.mail === action.payload.mail &&
+        user.password === action.payload.password
+          ? (state.registrato = true)
+          : console.log("errore accesso")
+      );
+    },
   },
 });
 
-export const { login } = loginSlice.actions;
+export const { login, checkLogin } = loginSlice.actions;
 export default loginSlice.reducer;
