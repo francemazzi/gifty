@@ -11,6 +11,11 @@
 ✅ Redux per valori -> area festeggiato
 ✅ Area di visione del budget sopra input (range che non può oltrepassare con proposte)
 
+- Login area:
+
+  - salvare utente corrente
+  - controllo valori
+
 - Invia proposte
 - Creazione area organizzatori del regalo per festeggiato
   - input -> number che esprime il budget del regalo

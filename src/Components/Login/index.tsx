@@ -21,8 +21,9 @@ import { login, checkLogin } from "../../features/Login/Login-slice";
 //   })
 // );
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+//check
+// const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 //sostiuire clasname con -> className={classes.login__container}
 export default function LoginInput() {
@@ -69,6 +70,7 @@ export default function LoginInput() {
   };
   //logout click
   const handleClickLogout = () => {
+    console.log(user);
     setIsRegister(false);
   };
 
@@ -90,138 +92,134 @@ export default function LoginInput() {
     dispatch(checkLogin(user));
   };
 
-  //TODO
-  //1. aggiugnere if(!loginTrue){}else {} -> vedere come mettrerlo dentro a container form
-  //2. procedere con todolist
-
   return (
     <div className="container__form">
-      {
-        !isRegister ? (
-          <div>
-            <form
-              className="login__container"
-              onSubmit={(e) => {
-                handleAdd(e);
-                inputRef.current?.blur();
-              }}
-            >
-              <h3>Benvenut* in Gifty! 🚪</h3>
-              <TextField
-                required
-                value={userEmail}
-                id="standard-mail-input"
-                label="Mail  "
-                type="text"
-                ref={inputRef}
-                autoComplete="current-password"
-                variant="standard"
-                onChange={(e) => {
-                  setUserEmail(e.target.value);
+      {!loginTrue ? (
+        <div>
+          {!isRegister ? (
+            <div>
+              <form
+                className="login__container"
+                onSubmit={(e) => {
+                  handleAdd(e);
+                  inputRef.current?.blur();
                 }}
-              />
-              <TextField
-                required
-                id="standard-password-input"
-                label="Password "
-                type="password"
-                value={pwd1}
-                autoComplete="current-password"
-                variant="standard"
-                onChange={(e) => setPwd1(e.target.value)}
-              />
-              <TextField
-                required
-                id="standard-password-input"
-                label="Conferma password "
-                type="password"
-                value={pwd2}
-                onChange={(e) => setPwd2(e.target.value)}
-                autoComplete="current-password"
-                variant="standard"
-              />
-              <button
-                className="input__submit"
-                type="submit"
-                onClick={handleClick}
               >
-                Registrati
-              </button>
-              <button
-                className="input__submit"
-                type="submit"
-                onClick={handleClickLogin}
-              >
-                Sei già registrato?
-              </button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <form
-              className="login__container"
-              onSubmit={(e) => {
-                handleCheck(e);
-                inputRef.current?.blur();
-              }}
-            >
-              <h3>Benvenuto in Gifty, effuta il login! 🚪</h3>
-              <TextField
-                required
-                value={userEmail}
-                id="standard-mail-input"
-                label="Mail  "
-                type="text"
-                ref={inputRef}
-                autoComplete="current-password"
-                variant="standard"
-                onChange={(e) => {
-                  setUserEmail(e.target.value);
+                <h3>Benvenut* in Gifty! 🚪</h3>
+                <TextField
+                  required
+                  value={userEmail}
+                  id="standard-mail-input"
+                  label="Mail  "
+                  type="text"
+                  ref={inputRef}
+                  autoComplete="current-password"
+                  variant="standard"
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="standard-password-input"
+                  label="Password "
+                  type="password"
+                  value={pwd1}
+                  autoComplete="current-password"
+                  variant="standard"
+                  onChange={(e) => setPwd1(e.target.value)}
+                />
+                <TextField
+                  required
+                  id="standard-password-input"
+                  label="Conferma password "
+                  type="password"
+                  value={pwd2}
+                  onChange={(e) => setPwd2(e.target.value)}
+                  autoComplete="current-password"
+                  variant="standard"
+                />
+                <button
+                  className="input__submit"
+                  type="submit"
+                  onClick={handleClick}
+                >
+                  Registrati
+                </button>
+                <button
+                  className="input__submit"
+                  type="submit"
+                  onClick={handleClickLogin}
+                >
+                  Sei già registrato?
+                </button>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <form
+                className="login__container"
+                onSubmit={(e) => {
+                  handleCheck(e);
+                  inputRef.current?.blur();
                 }}
-              />
-              <TextField
-                required
-                id="standard-password-input"
-                label="Password "
-                type="password"
-                value={pwd1}
-                onChange={(e) => setPwd1(e.target.value)}
-                autoComplete="current-password"
-                variant="standard"
-              />
-              <button
-                className="input__submit"
-                type="submit"
-                onClick={handleClick}
               >
-                Accedi
-              </button>
-            </form>
+                <h3>Benvenuto in Gifty, effuta il login! 🚪</h3>
+                <TextField
+                  required
+                  value={userEmail}
+                  id="standard-mail-input"
+                  label="Mail  "
+                  type="text"
+                  ref={inputRef}
+                  autoComplete="current-password"
+                  variant="standard"
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
+                />
+                <TextField
+                  required
+                  id="standard-password-input"
+                  label="Password "
+                  type="password"
+                  value={pwd1}
+                  onChange={(e) => setPwd1(e.target.value)}
+                  autoComplete="current-password"
+                  variant="standard"
+                />
+                <button
+                  className="input__submit"
+                  type="submit"
+                  onClick={handleClick}
+                >
+                  Accedi
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="login__container">
+          <h3>Benvenut* {loginData[0].username} 👋🏻</h3>
+          <div className="navigate">
+            <button onClick={() => navigate("/organizzaregalo")}>
+              Organizza regalo
+            </button>
+
+            <button onClick={() => navigate("/festeggiato")}>
+              Sei il festeggiato? 🥳
+            </button>
           </div>
-        )
-
-        // (
-        //   <div className="login__container">
-        //     <h3>Benvenut* {loginData[0].username} 👋🏻</h3>
-        //     <div className="navigate">
-        //       <button onClick={() => navigate("/organizzaregalo")}>
-        //         Organizza regalo
-        //       </button>
-
-        //       <button onClick={() => navigate("/festeggiato")}>
-        //         Sei il festeggiato? 🥳
-        //       </button>
-        //     </div>
-        //     <button
-        //       className="input__submit"
-        //       type="submit"
-        //       onClick={handleClickLogout}
-        //     >
-        //       logout
-        //     </button>
-        //   </div>
-        // )
-      }
+          <button
+            className="input__submit"
+            type="submit"
+            onClick={handleClickLogout}
+          >
+            logout
+          </button>
+        </div>
+      )}
     </div>
   );
 }
