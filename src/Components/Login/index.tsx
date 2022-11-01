@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 //Redux
 import { useAppSelector, UseAppDispatch } from "../../features/hooks";
-import { login, checkLogin } from "../../features/Login/Login-slice";
+import { login, checkLogin, logout } from "../../features/Login/Login-slice";
 
 //da rifare style
 // const useStyles = makeStyles((theme: Theme) =>
@@ -46,6 +46,7 @@ export default function LoginInput() {
   const dispatch = UseAppDispatch();
   const loginData = useAppSelector((state) => state.login.loginList);
   const loginTrue = useAppSelector((state) => state.login.registrato);
+  const loginFalse = useAppSelector((state) => state.login.registrato);
 
   //mail
   const [userEmail, setUserEmail] = useState<string>("");
@@ -56,7 +57,8 @@ export default function LoginInput() {
 
   //Is Register
   const [isRegister, setIsRegister] = useState<boolean>(false);
-
+  //Is login
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   //focus su input
   useEffect(() => {
     inputRef.current?.focus();
@@ -67,11 +69,16 @@ export default function LoginInput() {
   //login click
   const handleClickLogin = () => {
     setIsRegister(true);
+    console.log(isRegister);
   };
   //logout click
   const handleClickLogout = () => {
-    console.log(user);
-    setIsRegister(false);
+    user.mail = "";
+    setIsLogin(false);
+    dispatch(logout(isLogin));
+    setPwd1("");
+    setUserEmail("");
+    // setIsRegister(false);
   };
 
   const handleAdd = (e: React.FormEvent) => {
@@ -191,7 +198,7 @@ export default function LoginInput() {
                 <button
                   className="input__submit"
                   type="submit"
-                  onClick={handleClick}
+                  onClick={handleCheck}
                 >
                   Accedi
                 </button>

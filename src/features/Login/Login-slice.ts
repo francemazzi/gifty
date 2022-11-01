@@ -34,11 +34,14 @@ const loginSlice = createSlice({
         user.mail === action.payload.mail &&
         user.password === action.payload.password
           ? (state.registrato = true)
-          : console.log("errore accesso")
+          : (state.registrato = false)
       );
+    },
+    logout: (state, action: PayloadAction<boolean>) => {
+      state.registrato = action.payload;
     },
   },
 });
 
-export const { login, checkLogin } = loginSlice.actions;
+export const { login, checkLogin, logout } = loginSlice.actions;
 export default loginSlice.reducer;
