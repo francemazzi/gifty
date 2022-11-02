@@ -20,7 +20,7 @@
 ✅ Creazione area organizzatori del regalo per festeggiato
 ✅ input -> number che esprime il budget del regalo
 
-- Inserire input nome regalo per creare la voce di controllo del gruppo del regalo (in crea regalo)
+- Inserire input nome regalo per creare la voce di controllo del gruppo del regalo (in crea budget)
 - Link di convisione per inviare l'app al festeggiato
 - Future -> creare la funzione per gruppi per dividere soldi e raccoglierli
 
