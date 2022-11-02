@@ -2,6 +2,8 @@
 
 ![GIFTY](./img/funzioni.png)
 
+Deploy della logica dell'applicazione -> https://gifty-3d5c2.web.app
+
 ##To do list 📝
 
 ✅ Creazione area festeggiato

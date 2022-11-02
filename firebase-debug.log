@@ -1,0 +1,52 @@
+[debug] [2022-11-02T19:33:33.315Z] ----------------------------------------------------------------------
+[debug] [2022-11-02T19:33:33.316Z] Command:       /usr/local/bin/node /Users/francesco/Desktop/WebDev💻/Knobs/Esercitazioni/gifty/node_modules/.bin/firebase deploy
+[debug] [2022-11-02T19:33:33.316Z] CLI Version:   11.16.0
+[debug] [2022-11-02T19:33:33.316Z] Platform:      darwin
+[debug] [2022-11-02T19:33:33.317Z] Node Version:  v16.16.0
+[debug] [2022-11-02T19:33:33.318Z] Time:          Wed Nov 02 2022 20:33:33 GMT+0100 (Ora standard dell’Europa centrale)
+[debug] [2022-11-02T19:33:33.318Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-02T19:33:33.349Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-02T19:33:33.350Z] > authorizing via signed-in user (francemazzi@gmail.com)
+[debug] [2022-11-02T19:33:33.350Z] [iam] checking project gifty-3d5c2 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-11-02T19:33:33.351Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/gifty-3d5c2:testIamPermissions [none]
+[debug] [2022-11-02T19:33:33.351Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/gifty-3d5c2:testIamPermissions x-goog-quota-user=projects/gifty-3d5c2
+[debug] [2022-11-02T19:33:33.351Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gifty-3d5c2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-11-02T19:33:34.174Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/gifty-3d5c2:testIamPermissions 200
+[debug] [2022-11-02T19:33:34.174Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gifty-3d5c2:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-11-02T19:33:34.175Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gifty-3d5c2 [none]
+[debug] [2022-11-02T19:33:34.504Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gifty-3d5c2 200
+[debug] [2022-11-02T19:33:34.504Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gifty-3d5c2 {"projectId":"gifty-3d5c2","projectNumber":"548170585376","displayName":"Gifty","name":"projects/gifty-3d5c2","resources":{"hostingSite":"gifty-3d5c2"},"state":"ACTIVE","etag":"1_097d248b-d212-4e72-8c9b-701a2b9fe726"}
+[info] 
+[info] === Deploying to 'gifty-3d5c2'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-11-02T19:33:34.510Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gifty-3d5c2/versions [none]
+[debug] [2022-11-02T19:33:34.511Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gifty-3d5c2/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-11-02T19:33:35.711Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gifty-3d5c2/versions 200
+[debug] [2022-11-02T19:33:35.711Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gifty-3d5c2/versions {"name":"projects/548170585376/sites/gifty-3d5c2/versions/0790897f8bde5868","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[gifty-3d5c2]: beginning deploy... 
+[info] i  hosting[gifty-3d5c2]: found 13 files in build 
+[debug] [2022-11-02T19:33:35.725Z] [hosting] uploading with 200 concurrency
+[debug] [2022-11-02T19:33:35.900Z] [hosting] hash cache [YnVpbGQ] stored for 13 files
+[debug] [2022-11-02T19:33:35.900Z] [hosting][hash queue][FINAL] {"max":167,"min":9,"avg":31.153846153846153,"active":0,"complete":13,"success":13,"errored":0,"retried":0,"total":13,"elapsed":172}
+[debug] [2022-11-02T19:33:35.900Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/548170585376/sites/gifty-3d5c2/versions/0790897f8bde5868:populateFiles [none]
+[debug] [2022-11-02T19:33:35.900Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/548170585376/sites/gifty-3d5c2/versions/0790897f8bde5868:populateFiles {"files":{"/asset-manifest.json":"9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678","/logo192.png":"caff018b7f1e8fd481eb1c50d75b0ef236bcd5078b1d15c8bb348453fee30293","/manifest.json":"341d52628782f8ac9290bbfc43298afccb47b7cbfcee146ae30cf0f46bc30900","/index.html":"ee8270cbdba47213c85c1bba20754c988201d7140d0c648268f5f937c1a41e56","/robots.txt":"391d14b3c2f8c9143a27a28c7399585142228d4d1bdbe2c87ac946de411fa9a2","/static/css/main.33470642.css":"8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8","/logo512.png":"191fc21360b4ccfb1cda11a1efb97f489ed22672ca83f4064316802bbfdd750e","/static/css/main.33470642.css.map":"19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b","/static/js/main.1fd55c2e.js.LICENSE.txt":"e60e2832374f91684b4f6c0c07431cbe05882f40ff8871a981965fc8e3b17055","/favicon.ico":"62a49c22e4cc219594b521a74cd2d0cb17167f432d7d10e010425947860af2be","/static/js/main.1fd55c2e.js":"b6089e78163d6a833bea5ac4c147e62259bffb0491c926dadeecefd6e915f787","/static/media/giftPresent2.9325cb59ffd99eaaf498.jpg":"09a6d6dd124c2114f86484009daff632e83cdd5f65e9f4f23a0d9f24df2c1f95","/static/js/main.1fd55c2e.js.map":"b6bb830ea027e758499f57f9c4cab2bca8fe8bf5b138e87a6997ed8f4cefcb39"}}
+[debug] [2022-11-02T19:33:36.933Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/548170585376/sites/gifty-3d5c2/versions/0790897f8bde5868:populateFiles 200
+[debug] [2022-11-02T19:33:36.934Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/548170585376/sites/gifty-3d5c2/versions/0790897f8bde5868:populateFiles {"uploadRequiredHashes":["9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678","ee8270cbdba47213c85c1bba20754c988201d7140d0c648268f5f937c1a41e56","8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8","19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files"}
+[debug] [2022-11-02T19:33:36.937Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678 [none]
+[debug] [2022-11-02T19:33:36.937Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678 [stream]
+[debug] [2022-11-02T19:33:36.938Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/ee8270cbdba47213c85c1bba20754c988201d7140d0c648268f5f937c1a41e56 [none]
+[debug] [2022-11-02T19:33:36.939Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/ee8270cbdba47213c85c1bba20754c988201d7140d0c648268f5f937c1a41e56 [stream]
+[debug] [2022-11-02T19:33:36.940Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8 [none]
+[debug] [2022-11-02T19:33:36.940Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8 [stream]
+[debug] [2022-11-02T19:33:36.942Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b [none]
+[debug] [2022-11-02T19:33:36.942Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b [stream]
+[debug] [2022-11-02T19:33:36.943Z] [hosting][populate queue][FINAL] {"max":1037,"min":1037,"avg":1037,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1044}
+[debug] [2022-11-02T19:33:36.943Z] [hosting] uploads queued: 4
+[debug] [2022-11-02T19:33:38.528Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b 200
+[debug] [2022-11-02T19:33:38.528Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/19a0f58cf367af8db57ec697a50acd1478f0a19e9052c986d0cfc6c8a72e4c1b [stream]
+[debug] [2022-11-02T19:33:38.866Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8 200
+[debug] [2022-11-02T19:33:38.866Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/8eb4437789175457c3fe4181302b38e1821119d4cb92db0e610a69034d4559d8 [stream]
+[debug] [2022-11-02T19:33:38.937Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678 200
+[debug] [2022-11-02T19:33:38.937Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/gifty-3d5c2/versions/0790897f8bde5868/files/9feefab9bdce784656dfa6a1a866fe845414c04fe8537cfe48fce05c22762678 [stream]
