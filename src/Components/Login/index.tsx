@@ -4,30 +4,19 @@ import { useRef, useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { LoginModel } from "../../model";
 import { Link, useNavigate } from "react-router-dom";
-
-// import { makeStyles, Theme, createStyles } from "@mui/material";
+// import UserPage from "../UserPage";
 
 //Redux
 import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import { login, checkLogin, logout } from "../../features/Login/Login-slice";
 
-//da rifare style
-// const useStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     login__container: {
-//       background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-//       boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-//     },
-//   })
-// );
+//firebase
 
 //check
 // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-//sostiuire clasname con -> className={classes.login__container}
 export default function LoginInput() {
-  //   const classes = useStyles();
   //router
   const navigate = useNavigate();
 
@@ -81,6 +70,7 @@ export default function LoginInput() {
     // setIsRegister(false);
   };
 
+  //form di iscrizione
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     //setup user obj

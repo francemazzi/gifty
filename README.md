@@ -12,20 +12,19 @@
 ✅ Area di visione del budget sopra input (range che non può oltrepassare con proposte)
 
 - Login area:
+  ✅ registrazione, login e logout
+- salvare utente corrente su firebase
+- autenticazione login e registrazione firebase
 
-  - salvare utente corrente
-  - controllo valori
+✅ Invia proposte
+✅ Creazione area organizzatori del regalo per festeggiato
+✅ input -> number che esprime il budget del regalo
 
-- Invia proposte
-- Creazione area organizzatori del regalo per festeggiato
-  - input -> number che esprime il budget del regalo
-  - Link di convisione per inviare l'app al festeggiato
+- Inserire input nome regalo per creare la voce di controllo del gruppo del regalo (in crea regalo)
+- Link di convisione per inviare l'app al festeggiato
 - Future -> creare la funzione per gruppi per dividere soldi e raccoglierli
 
 ##Dubbi
-
-- Come configurare redux correttamente?
-- Come configurare le varie interface?
 
 ## Getting started
 

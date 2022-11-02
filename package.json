@@ -25,6 +25,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
+    "firebase": "^9.13.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.0",
     "nanoid": "^4.0.0",
