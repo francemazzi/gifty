@@ -1,35 +1,90 @@
 import React, { useRef, useState } from "react";
 import "./Inputfield.css";
 import GiftsList from "../Giftslist";
+import { Gift } from "../../model";
 
 //Redux
 import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import { giftAdded, increment } from "../../features/Counter/Counter";
 
+//database import
+// import GiftDataService from "../../services/gift.services";
+
+//test firestore
+import { db } from "../../services/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 const Inputfield: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   //redux -> counter poi input
-  const count = useAppSelector((state) => state.counter.value);
+  let count = 0;
+  count = +useAppSelector((state) => state.counter.value);
   const budgetPresent = useAppSelector((state) => state.counter.budget);
   const dispatch = UseAppDispatch();
   const handleClick = () => {
     dispatch(increment());
   };
 
-  //gift setup
+  //Gift setup
   const [gift, setGift] = useState<string>("");
 
-  const handleAdd = (e: React.FormEvent) => {
+  const [id, setId] = useState<string>("");
+  const [deleteGift, setDeleteGift] = useState<boolean>(false);
+
+  //Errore setup
+  interface MessageInput {
+    errorMessage: boolean;
+    msg: string;
+  }
+  const [messageInputField, setMessageInputField] = useState<MessageInput>({
+    errorMessage: false,
+    msg: "",
+  });
+
+  const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(giftAdded(gift));
+
     setGift("");
+    //set error message
+    const newGift: Gift = {
+      id: count - 1,
+      gift: gift,
+      delete: deleteGift,
+    };
+    console.log(newGift);
+    gift === ""
+      ? setMessageInputField({
+          errorMessage: true,
+          msg: "Inserisci almeno un regalo",
+        })
+      : dispatch(giftAdded(gift));
+
+    //Invio dati firebase
+    //TODO
+    //debug errore firestore -> Module not found: Error:
+    //Cannot find file: 'index.js' does not match the corresponding name
+    //on disk: './node_modules/@Firebase/auth/dist/esm2017/@firebase'.
+
+    // se funziona ricollegare try-catch a giftservices
+    //eliminando test firestore e reiserendo database import
+    try {
+      const docRef = await addDoc(collection(db, "gifts"), newGift);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      setMessageInputField({
+        errorMessage: true,
+        msg: "Errore invio dati",
+      });
+    }
   };
 
   return (
     <div className="input__container">
       <span className="budgetArea">
-        Hai inserito {count} desideri. Il tuo Budget è: {budgetPresent} €
+        {count === 0
+          ? `Non hai inserito alcun desiderio, il tuo budget è di ${budgetPresent}`
+          : `Hai inserito ${count} desideri. Il tuo Budget è: ${budgetPresent} €`}
       </span>
       <form
         className="input"

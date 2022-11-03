@@ -7,12 +7,14 @@ interface CounterState {
   value: number;
   giftList: Gift[];
   budget: number;
+  error: string;
 }
 
 const initialState: CounterState = {
   value: 0,
   giftList: [],
   budget: 0,
+  error: "",
 };
 
 const counterSlice = createSlice({
