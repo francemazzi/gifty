@@ -11,7 +11,7 @@ import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import { login, checkLogin, logout } from "../../features/Login/Login-slice";
 
 //firebase
-import giftCollectionRef from "../../services/gift.services";
+import userCollectionRer from "../../services/login.services";
 
 //check
 // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -93,7 +93,7 @@ export default function LoginInput() {
     setIsRegister(true);
     //Invio dati firebase
     try {
-      await giftCollectionRef.addUsers(user);
+      await userCollectionRer.addUsers(user);
       setMessageInputField({
         errorMessage: false,
         msg: "Login ok aggiunta",
@@ -105,6 +105,7 @@ export default function LoginInput() {
       });
     }
     setUserEmail("");
+    setPwd1("");
   };
 
   const handleCheck = (e: React.FormEvent) => {

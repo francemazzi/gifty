@@ -7,6 +7,18 @@ import { Gift } from "../../model";
 //firebase
 import GiftDataService from "../../services/gift.services";
 
+//fetch data from firebase --> non fnziona
+// const GiftGroup = () => {
+//   const [gifts, setGifts] = useState([]);
+//   useEffect(() => {
+//     getGiftGroup();
+//   }, []);
+//   const getGiftGroup = async () => {
+//     const data = await GiftDataService.getAllGifts();
+//     console.log(data.docs);
+//   };
+// };
+
 interface CounterState {
   value: number;
   giftList: Gift[];
@@ -20,15 +32,6 @@ const initialState: CounterState = {
   budget: 0,
   error: "",
 };
-
-// functon firebase
-// const remove = async (id: string) => {
-//   await GiftDataService.deleteGift(id);
-// };
-
-//TODO
-//remove gestito da firebase
-//userpage gestita da dati firebase
 
 const counterSlice = createSlice({
   name: "counter",
@@ -46,7 +49,6 @@ const counterSlice = createSlice({
     },
     removeGift: (state, action: PayloadAction<number>) => {
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
-      // remove(action.payload);
     },
     modifyGift: (state, action: PayloadAction<string>) => {
       const item = action.payload;
@@ -63,18 +65,6 @@ const counterSlice = createSlice({
     },
   },
 });
-
-//fetch data from firebase --> non fnziona
-const GiftGroup = () => {
-  const [gifts, setGifts] = useState([]);
-  useEffect(() => {
-    getGiftGroup();
-  }, []);
-  const getGiftGroup = async () => {
-    const data = await GiftDataService.getAllGifts();
-    console.log(data.docs);
-  };
-};
 
 export const {
   increment,

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Inputfield.css";
 import GiftsList from "../Giftslist";
 import { Gift } from "../../model";
@@ -72,6 +72,7 @@ const Inputfield: React.FC = () => {
         msg: "errore caricamento",
       });
     }
+
     setGift("");
   };
 

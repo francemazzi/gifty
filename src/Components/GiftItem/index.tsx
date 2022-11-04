@@ -13,13 +13,36 @@ import {
 } from "../../features/Counter/Counter";
 import { useSelector } from "react-redux";
 
+//firebase
+import GiftDataService from "../../services/gift.services";
+import { DocumentData } from "firebase/firestore";
+
 const GiftItem = ({ item }: any) => {
   //redux -> counter poi input
   const dispatch = UseAppDispatch();
   const gifts = useAppSelector((state) => state.counter.giftList);
+
+  //firebase
+  const [list, setList] = useState<DocumentData>([]);
+  useEffect(() => {
+    getGiftGroup();
+  }, []);
+  const getGiftGroup = async () => {
+    const data: DocumentData = await GiftDataService.getAllGifts();
+    setList(data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
+    console.log(data.docs);
+  };
+
+  const remove = async (id: string) => {
+    await GiftDataService.deleteGift(+id);
+    getGiftGroup();
+  };
+
   //delete function
   const handleDelete = () => {
     dispatch(removeGift(item.id));
+    remove(String(item.id));
+    getGiftGroup();
     dispatch(decremet());
   };
 

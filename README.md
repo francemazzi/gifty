@@ -15,7 +15,8 @@ Deploy della logica dell'applicazione -> https://gifty-3d5c2.web.app
 
 - Login area:
   ✅ registrazione, login e logout
-- salvare utente corrente su firebase
+  ✅ salvare utente corrente su firebase
+- Aggiunge l'id utente nel gift
 - autenticazione login e registrazione firebase
 
 ✅ Invia proposte
