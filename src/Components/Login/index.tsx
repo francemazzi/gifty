@@ -11,6 +11,7 @@ import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import { login, checkLogin, logout } from "../../features/Login/Login-slice";
 
 //firebase
+import giftCollectionRef from "../../services/gift.services";
 
 //check
 // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -48,6 +49,16 @@ export default function LoginInput() {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   //Is login
   const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  //Errore setup
+  interface MessageInput {
+    errorMessage: boolean;
+    msg: string;
+  }
+  const [messageInputField, setMessageInputField] = useState<MessageInput>({
+    errorMessage: false,
+    msg: "",
+  });
   //focus su input
   useEffect(() => {
     inputRef.current?.focus();
@@ -71,7 +82,7 @@ export default function LoginInput() {
   };
 
   //form di iscrizione
-  const handleAdd = (e: React.FormEvent) => {
+  const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     //setup user obj
     user.id = 0;
@@ -80,6 +91,20 @@ export default function LoginInput() {
     user.password = pwd1;
     pwd1 === pwd2 ? dispatch(login(user)) : console.log("Non corrispondono!");
     setIsRegister(true);
+    //Invio dati firebase
+    try {
+      await giftCollectionRef.addUsers(user);
+      setMessageInputField({
+        errorMessage: false,
+        msg: "Login ok aggiunta",
+      });
+    } catch (err) {
+      setMessageInputField({
+        errorMessage: true,
+        msg: "errore caricamento",
+      });
+    }
+    setUserEmail("");
   };
 
   const handleCheck = (e: React.FormEvent) => {

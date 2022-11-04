@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { useEffect, useState } from "react";
 import { idText } from "typescript";
 import GiftsList from "../../Components/Giftslist";
 import { Gift } from "../../model";
+
+//firebase
+import GiftDataService from "../../services/gift.services";
 
 interface CounterState {
   value: number;
@@ -17,6 +21,15 @@ const initialState: CounterState = {
   error: "",
 };
 
+// functon firebase
+// const remove = async (id: string) => {
+//   await GiftDataService.deleteGift(id);
+// };
+
+//TODO
+//remove gestito da firebase
+//userpage gestita da dati firebase
+
 const counterSlice = createSlice({
   name: "counter",
   initialState,
@@ -27,18 +40,13 @@ const counterSlice = createSlice({
     decremet(state) {
       state.value > 0 ? state.value-- : (state.value = 0);
     },
-    giftAdded: (state, action: PayloadAction<string>) => {
-      state.giftList = [
-        ...state.giftList,
-        {
-          gift: action.payload,
-          id: state.giftList.length,
-          delete: false,
-        },
-      ];
+    giftAdded: (state, action: PayloadAction<Gift>) => {
+      state.giftList = [...state.giftList, action.payload];
+      console.log(state.giftList);
     },
     removeGift: (state, action: PayloadAction<number>) => {
       state.giftList = state.giftList.filter(({ id }) => action.payload !== id);
+      // remove(action.payload);
     },
     modifyGift: (state, action: PayloadAction<string>) => {
       const item = action.payload;
@@ -55,6 +63,18 @@ const counterSlice = createSlice({
     },
   },
 });
+
+//fetch data from firebase --> non fnziona
+const GiftGroup = () => {
+  const [gifts, setGifts] = useState([]);
+  useEffect(() => {
+    getGiftGroup();
+  }, []);
+  const getGiftGroup = async () => {
+    const data = await GiftDataService.getAllGifts();
+    console.log(data.docs);
+  };
+};
 
 export const {
   increment,

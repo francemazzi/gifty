@@ -8,11 +8,11 @@ import { useAppSelector, UseAppDispatch } from "../../features/hooks";
 import { giftAdded, increment } from "../../features/Counter/Counter";
 
 //database import
-// import GiftDataService from "../../services/gift.services";
+import GiftDataService from "../../services/gift.services";
 
 //test firestore
-import { db } from "../../services/firebase";
-import { collection, addDoc } from "firebase/firestore";
+// import { db } from "../../services/firebase";
+// import { collection, addDoc } from "firebase/firestore";
 
 const Inputfield: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -45,38 +45,34 @@ const Inputfield: React.FC = () => {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setGift("");
     //set error message
     const newGift: Gift = {
       id: count - 1,
       gift: gift,
       delete: deleteGift,
     };
-    console.log(newGift);
+    //cambiato gift in newGift
     gift === ""
       ? setMessageInputField({
           errorMessage: true,
           msg: "Inserisci almeno un regalo",
         })
-      : dispatch(giftAdded(gift));
+      : dispatch(giftAdded(newGift));
 
     //Invio dati firebase
-    //TODO
-    //debug errore firestore -> Module not found: Error:
-    //Cannot find file: 'index.js' does not match the corresponding name
-    //on disk: './node_modules/@Firebase/auth/dist/esm2017/@firebase'.
-
-    // se funziona ricollegare try-catch a giftservices
-    //eliminando test firestore e reiserendo database import
     try {
-      const docRef = await addDoc(collection(db, "gifts"), newGift);
-      console.log("Document written with ID: ", docRef.id);
-    } catch (error) {
+      await GiftDataService.addGifts(newGift);
+      setMessageInputField({
+        errorMessage: false,
+        msg: "Nuova Gift aggiunta",
+      });
+    } catch (err) {
       setMessageInputField({
         errorMessage: true,
-        msg: "Errore invio dati",
+        msg: "errore caricamento",
       });
     }
+    setGift("");
   };
 
   return (
