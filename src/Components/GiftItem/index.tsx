@@ -34,14 +34,14 @@ const GiftItem = ({ item }: any) => {
   };
 
   const remove = async (id: string) => {
-    await GiftDataService.deleteGift(+id);
+    await GiftDataService.deleteGift(id + "");
     getGiftGroup();
   };
 
   //delete function
   const handleDelete = () => {
     dispatch(removeGift(item.id));
-    remove(String(item.id));
+    remove(item.id + "");
     getGiftGroup();
     dispatch(decremet());
   };

@@ -24,8 +24,7 @@ export class GiftDataService {
     return updateDoc(giftDoc, updateGift);
   };
   //Controllo eliminazione
-  //TODO vedere se valore è lo steso
-  deleteGift = (id: any) => {
+  deleteGift = (id: string) => {
     const giftDoc = doc(db, "gifts", id);
     return deleteDoc(giftDoc);
   };
