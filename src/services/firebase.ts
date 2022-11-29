@@ -6,6 +6,9 @@ import { getAuth } from "@firebase/auth";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "@firebase/storage";
 // import { getDatabase } from "firebase/database";
+import { GoogleAuthProvider } from "firebase/auth";
+import "firebase/auth";
+import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAz0lYGKHc4FVl_pFPNyZslGwKwG_1xPPU",
@@ -21,10 +24,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analyticsFirebase = getAnalytics(app);
 
+//autenticatore
+export const provider = new GoogleAuthProvider();
+export const firestore = getFirestore(app);
 export const auth = getAuth(app);
+auth.languageCode = "it";
 export const db = getFirestore(app);
 // export const db = getDatabase(app);
 export const storage = getStorage(app);
-
 export default firebaseConfig;
 export { app, analyticsFirebase };

@@ -13,10 +13,6 @@ import { login, checkLogin, logout } from "../../features/Login/Login-slice";
 //firebase
 import userCollectionRer from "../../services/login.services";
 
-//check
-// const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 export default function LoginInput() {
   //router
   const navigate = useNavigate();
@@ -71,6 +67,7 @@ export default function LoginInput() {
     setIsRegister(true);
     console.log(isRegister);
   };
+
   //logout click
   const handleClickLogout = () => {
     user.mail = "";
